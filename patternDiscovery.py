@@ -1,25 +1,9 @@
 #!/usr/bin/python3
 
-def FrequentElements( elements = [], transactions = [], minSup = 0.5 , minConf = 0.5 ):
-    """ Questa funzione prende gli elementi di elements, suppomendo che si tratti di liste, e conta 
-        quante volte compaiono nelle transazioni riportate in itemlist.
-	Restituisce un dizionario che ha per chiave gli elementi di elements e valori i rispettivi conteggi 
-
-        Per ogni elemento di elements 
-            se è una una stringa
-                conta in quanti elementi di itemlist è presente
-                costruisci la voce del dizionario
-            se è una lista
-                prendi il primo elemento
-                per ogni elemento di itemlist che lo contienen
-                    verifica se ci sono tutti gli elementi della lista
-                        se si
-                            crea voce dizionario
-                        se no
-                            vai all'elemento successivo
-        pulisci il dizionario da elementi non frequenti
-        restituisci il dizionario
-    """
+def FrequentElements( elements = [], transactions = [], minSup = 0.5 ):
+    """ This function get as input the list of the element to be tested, the list of transactions and the values of minimun support e minimum Confidence.
+        The function returns a dictionary that has as keys the frequent elements and values a list with the count and the support
+    """ 
     frequencies = {};
     allFrequencies = {};
     label = '';
@@ -53,10 +37,11 @@ def FrequentElements( elements = [], transactions = [], minSup = 0.5 , minConf =
                     except:
                         allFrequencies[ label ] = 1;
 
+    # purging dictionary
     for element in elements:
         if isinstance( element, str ):
             if allFrequencies[ element ] / numTransactions >= minSup:
-                frequencies[ element ] = allFrequencies[ element ];
+                frequencies[ element ] = [ allFrequencies[ element ], allFrequencies[ element ] / numTransactions ];
         else:
             label = '';
             for a in element:
@@ -65,7 +50,7 @@ def FrequentElements( elements = [], transactions = [], minSup = 0.5 , minConf =
             label=label.lstrip(',');
 
             if allFrequencies[ label ] / numTransactions >= minSup:
-                frequencies[ label ] = allFrequencies[ label ];
+                frequencies[ label ] = [ allFrequencies[ label ], allFrequencies[ label ] / numTransactions ];
 
     return frequencies;
          
@@ -98,11 +83,9 @@ a.close()
 itemList = [sorted(item.rstrip('\n').split(sep)) for item in itemList]
 elementList = generateOneItemesetList( itemList );
 
+frequencies = FrequentElements( elementList, itemList , minSup );
+print( frequencies );
+
 elencoDebug=[ ['biscotto','cioccolatino'], ['patata','banana'], ['broccolo', 'nutella', 'pane']];
-#frequencies = FrequentElements( elementList, itemList , minSup, minConf );
-frequencies = FrequentElements( elencoDebug, itemList , minSup, minConf );
-
-#for rule in itemList:
-#    print ( str(rule)) ;
-
+frequencies = FrequentElements( elencoDebug, itemList , minSup );
 print( frequencies );
