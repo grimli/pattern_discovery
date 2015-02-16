@@ -1,0 +1,13 @@
+Step 1
+il programma deve leggere da una sorgente i dati e generare la lista completa dei ferquent itemset leggendo da input min_support e min_confidence
+parto con un file strutturato come csv che ha nella prima colonna il TID
+
+inizio con il metodo diretto dell'Apriori Algorithm
+
+Sarebbe interessante che il codice mostri alcuni dati sui tempi di elaborazione e l'uso delle risorse che permettano un confronto tra i vari algoritmi
+
+Flessibilità da aggiungere 
+- altri tipi di sorgente
+- vari algoritmi di data mining
+- l'esempio di SQL è interessante da analizzare
+
