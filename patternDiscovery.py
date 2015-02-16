@@ -43,10 +43,8 @@ def FrequentElements( elements = [], transactions = [], minSup = 0.5 , minConf =
             for transaction in transactions:
                 flag = 0;
                 for field in element:
-                    try:
-                        transaction.count( field );
-                    except:
-                        label -= 1;
+                    if ( transaction.count( field ) == 0 ):
+                        flag -= 1;
                         break;
 
                 if flag >= 0:
@@ -68,7 +66,6 @@ def FrequentElements( elements = [], transactions = [], minSup = 0.5 , minConf =
 
             if allFrequencies[ label ] / numTransactions >= minSup:
                 frequencies[ label ] = allFrequencies[ label ];
-            
 
     return frequencies;
          
@@ -101,7 +98,7 @@ a.close()
 itemList = [sorted(item.rstrip('\n').split(sep)) for item in itemList]
 elementList = generateOneItemesetList( itemList );
 
-elencoDebug=[ ['biscotto','cioccolatino'], ['patata','banana']];
+elencoDebug=[ ['biscotto','cioccolatino'], ['patata','banana'], ['broccolo', 'nutella', 'pane']];
 #frequencies = FrequentElements( elementList, itemList , minSup, minConf );
 frequencies = FrequentElements( elencoDebug, itemList , minSup, minConf );
 
