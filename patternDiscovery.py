@@ -53,10 +53,10 @@ def FrequentElements( elements = [], transactions = [], minSup = 0.5 ):
                 frequencies[ label ] = [ allFrequencies[ label ], allFrequencies[ label ] / numTransactions ];
 
     return frequencies;
-         
+
 def generateOneItemesetList ( itemset = [] ):
-    """ Questa funzione genera la lista degli 1-itemsets a partire dalla tabella delle transazioni 
-        Per il momento restituisco una lista ordinata
+    """ This function generates the 1-itemset's list.
+        It accepts as input the transaction's list
     """
     elements = [];
     for transaction in itemset:
