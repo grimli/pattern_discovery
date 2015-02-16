@@ -86,6 +86,6 @@ elementList = generateOneItemesetList( itemList );
 frequencies = FrequentElements( elementList, itemList , minSup );
 print( frequencies );
 
-elencoDebug=[ ['biscotto','cioccolatino'], ['patata','banana'], ['broccolo', 'nutella', 'pane']];
-frequencies = FrequentElements( elencoDebug, itemList , minSup );
-print( frequencies );
+#elencoDebug=[ ['biscotto','cioccolatino'], ['patata','banana'], ['broccolo', 'nutella', 'pane']];
+#frequencies = FrequentElements( elencoDebug, itemList , minSup );
+#print( frequencies );
